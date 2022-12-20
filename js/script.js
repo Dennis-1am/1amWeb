@@ -1,24 +1,7 @@
 window.onload = function () {
-    // write a message to the to the DOM make it slow and disappear when clicked
-    let message = document.createElement("div");
-    message.innerHTML = "Click to start";
-    message.id = "message";
-    // add the message starting from the bottom of the dom
-    document.body.appendChild(message);
-    // make the message appear slowly
-    message.style.opacity = 0;
-    setTimeout(function () {
-        message.style.opacity = 1;
-    }, 1000);
-    // make the message disappear when clicked
-    message.addEventListener("click", function () {
-        message.style.opacity = 0;
-        setTimeout(function () {
-            message.remove();
-        }, 1000);
-    }
-    );
-};
+    printMsg("Hello, I'm a non-intellegient assistance bot. I'm here to help you learn more about Dennis. Would you like to learn more about Dennis?");
+    loadOptions(["Yes", "No"]);
+}
 
 document.addEventListener("mousemove", function (event) {
 
@@ -27,18 +10,19 @@ document.addEventListener("mousemove", function (event) {
     let mouseY = event.clientY;
 
     let pupil = document.getElementById("pupil");
-
+    // get the position of the pupil
     let pupilX = pupil.offsetLeft;
     let pupilY = pupil.offsetTop;
 
-    let diffX = (mouseX - pupilX)*.1;
-    let diffY = (mouseY - pupilY)*.1;
+    // calculate the difference between the mouse position and the pupil position
+    let diffX = (mouseX - pupilX) * .1; // multiply by .1 to slow down the movement
+    let diffY = (mouseY - pupilY) * .1;
 
     // limit the movement of the pupil to within the eye
-    if (diffX > 100) {
-        diffX = 100;
-    } else if (diffX < -100) {
-        diffX = -100;
+    if (diffX > 150) {
+        diffX = 150;
+    } else if (diffX < -150) {
+        diffX = -150;
     }
 
     if (diffY > 30) {
@@ -51,4 +35,70 @@ document.addEventListener("mousemove", function (event) {
 
 });
 
+document.getElementById("msgbox").addEventListener("mouseover", function () {
+    changeColor();
+    document.getElementById("msgbox").addEventListener("mouseout", function () {
+        resetColor();
+    });
+});
 
+document.getElementsByClassName("options")[0].addEventListener("mouseover", function () {
+    changeColor();
+    document.getElementsByClassName("options")[0].addEventListener("mouseout", function () {
+        resetColor();
+    });
+});
+
+document.getElementsByClassName("options")[1].addEventListener("mouseover", function () {
+    changeColor();
+    document.getElementsByClassName("options")[1].addEventListener("mouseout", function () {
+        resetColor();
+    });
+});
+
+function changeColor() {
+    let pupil = document.getElementById("pupil");
+    let iris = document.getElementById("iris");
+    pupil.style.backgroundColor = "red";
+    pupil.style.padding = "2rem";
+    iris.style.padding = "1rem";
+}
+
+function resetColor() {
+    let pupil = document.getElementById("pupil");
+    let iris = document.getElementById("iris");
+    pupil.style.backgroundColor = "black";
+    pupil.style.padding = "3rem";
+    iris.style.padding = "1rem";
+}
+
+function printMsg(msg) {
+    let msgbox = document.getElementById("msgbox");
+    let i = 0;
+    let timer = setInterval(function () {
+        if (i < msg.length) {
+            msgbox.innerHTML += msg.charAt(i);
+            i++;
+        } else {
+            clearInterval(timer);
+        }
+    }, 35);
+}
+
+function loadOptions(textList){ // textList is an array of strings in this case yes and no
+    let optionlist = document.getElementsByClassName("options");
+    let i = 0; // index of the optionList
+    let j = 0; // index of the word
+    let timer = setInterval(function () {
+        if(i < optionlist.length && j < textList[i].length){
+            optionlist[i].innerHTML += textList[i][j];
+            j++;
+        } else if(i < optionlist.length && j >= textList[i].length){
+            i++;
+            j = 0;
+        } else {
+            clearInterval(timer);
+        }
+    }
+    , 100);
+}
