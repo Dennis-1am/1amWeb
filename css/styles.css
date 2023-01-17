@@ -1,86 +1,54 @@
-#navgrid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 0;
-    background: #000000;
-    color: rgb(255, 255, 255);
-}
-
-body {
-    background: #040404f5;
-    font-family: 'Open Sans', sans-serif;
-    color: rgb(255, 255, 255);
-    margin: 0;
-}
-
-#eye{
-    grid-column: 2 / 2;
-    grid-row: 1 / 2;
-    background: #ffffff;
+.profile-img-center{
     border-radius: 50%;
-    width: 20rem;
-    height: 10rem;
-    margin: 1rem auto;
+    border: 10px solid rgb(255, 255, 255);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: auto;
+    width: 400px;
+    height: 400px;
 }
-
-#pupil{
-    grid-column: 2 / 2;
-    grid-row: 1 / 2;
-    background: #000000;
-    border-radius: 50%;
-    margin: 2rem auto;
-    padding: 3rem;
-}
-
-#iris{
-    background: #ffffff;
-    padding: 1rem;
-    border-radius: 50%;
-}
-
-#maingrid{
-    display: grid;
-    height: 10rem;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    /* set the margins to top 12 rem left right auto and bottom 0 */
-    margin: 15rem auto 0 auto;
-    width: 100%;
-}
-
-#msgbox {
-    background: #00c3ff;
-    border-radius: 2rem;
-    padding: 8rem;
-    margin: 1rem;
-    font-size: 2rem;
-    grid-column: 2 / 5;
-    grid-row: 1 / 1;
-}
-
-#msgbuttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    /* put this underneatht the message box */
-    grid-column: 2 / 5;
-}
-
-.options {
-    border-radius: 15%;
+.profile-name-center{
     text-align: center;
-    background: #100f0ff5;
-    border: 1px solid #040404f5;
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    margin-top: 50px;
+    font-size: 2rem;
 }
-.options:hover {
-    background: #ffffff;
-    color: #000000;
+.profile-title-center{
+    text-align: center;
+    font-size: 4rem;
+    margin: 0 0 30px 0;
+}
+.profile-description-center{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 0 30px 0;
+    width:  50%;
+    margin: 3rem auto;
+}
+.resume-grid{
+    display: grid;
+    margin: auto;
+    max-width: 650px;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    text-align: center;
+    font-size: 2rem;
+}
+.Summary {
+    font-size: 1.25rem;
+    border-radius: 10px;
+    display: none;
+}
+.Skills {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    display: none;
 }
 
+#footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+    margin: 3rem auto;
+    background-color: rgb(255, 255, 255);
+}
