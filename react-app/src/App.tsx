@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import Button from './components/Button';
 import InputBox from './components/InputBox';
 import MessageList from './components/MessageList';
+import Lam from './components/Lam'
 
 export default function App() {
 
@@ -17,9 +18,9 @@ export default function App() {
     console.log(messages)
   }
 
-
   return (
     <div>
+      <Lam content="ice-cream"></Lam>
       <InputBox placeholder="Enter your name" onChange={(e) => setInputValue(e.target.value)}/>
       <MessageList messages={messages}/>
       <Button color="primary" onClick={handleOnClick}>Submit</Button> 

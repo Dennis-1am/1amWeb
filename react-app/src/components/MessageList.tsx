@@ -10,7 +10,6 @@ function MessageList({messages}: Props) {
   console.log(messages);
   return (
     <>
-    <h1>{messages}</h1>
     <ul className='list-group'>  
       {messages.map((message, index) => (
         <li key = {index}>
