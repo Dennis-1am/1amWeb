@@ -1,29 +1,38 @@
-import { useRef, useState } from 'react';
-import Button from './components/Button';
-import InputBox from './components/InputBox';
-import MessageList from './components/MessageList';
-import Lam from './components/Lam'
+import React, { useState } from 'react'
+import './App.css'
+import List from './components/List'
+import Tasks from './components/Tasks'
+import Counter from './components/Counter'
+
+
+const [counter, setCounter] = useState(0);
+
+const handleCheckboxChange = (event : any) => {
+  if (event.target.checked) {
+    setCounter(counter + 1);
+  } else {
+    setCounter(counter - 1);
+  }
+};
 
 export default function App() {
-
-  
-
-  const [inputValue, setInputValue] = useState<string>('');
-
-  const [messages, setMessages] = useState<string[]>([])
-
-  // adds the input value to the inputList array when the button is clicked
-  const handleOnClick = () => {
-    setMessages([...messages, inputValue]);
-    console.log(messages)
-  }
-
   return (
-    <div>
-      <Lam content="ice-cream"></Lam>
-      <InputBox placeholder="Enter your name" onChange={(e) => setInputValue(e.target.value)}/>
-      <MessageList messages={messages}/>
-      <Button color="primary" onClick={handleOnClick}>Submit</Button> 
+    <div className="App">
+      <div className="container">
+        <div className="row">
+          <div className="col text-center">
+            <h1>Task Manager</h1>
+            <Counter count={0} />
+          </div>
+          <div className="col">
+            <List.ListConstructor name="Tasks" list={[<Tasks.TasksConstructor name="To Do Task" />, <Tasks.TasksConstructor name="To Do Task" />]} />
+          </div>
+          <div className="col">
+            <List.ListConstructor name="Completed" list={[<Tasks.TasksConstructor name="Completed Task" />]} />
+          </div>
+        </div>
+      </div>
+
     </div>
-  );
+  )
 }
